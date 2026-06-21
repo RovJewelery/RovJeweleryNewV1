@@ -136,16 +136,14 @@ h1 em, h2 em, .custom-card em { font-weight: 400; color: var(--gold); }
 .custom-card p:not(.eyebrow) { color: var(--muted); line-height: 1.7; font-size: 12px; max-width: 300px; }
 .custom-card a { display: inline-flex; border-bottom: 1px solid var(--gold); padding-bottom: 8px; margin-top: 18px; text-transform: uppercase; letter-spacing: .16em; font-size: 9px; gap: 30px; }
 
-.manifesto { min-height: 660px; padding: 10vw 9vw; position: relative; overflow: hidden; display: flex; align-items: center; background: #050505; }
-.manifesto::before { content: ""; position: absolute; inset: 0; opacity: .1; background: repeating-linear-gradient(110deg, transparent 0 40px, rgba(212,168,47,.08) 41px 42px); }
-.manifesto-mark { font-family: var(--serif); font-size: 540px; line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(212,168,47,.12); position: absolute; left: -45px; bottom: -60px; }
-.manifesto-copy { max-width: 780px; position: relative; margin: auto; }
+.manifesto { height: 780px; position: relative; overflow: hidden; display: grid; place-items: center; background: #050505; }
+.manifesto-videos { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.manifesto-videos video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.manifesto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.56), rgba(0,0,0,.22) 50%, rgba(0,0,0,.56)), linear-gradient(0deg, rgba(0,0,0,.48), rgba(0,0,0,.12) 60%, rgba(0,0,0,.44)); pointer-events: none; }
+.manifesto-copy { max-width: 780px; position: relative; z-index: 1; margin: auto; padding: 32px; }
 .manifesto blockquote { font-family: var(--serif); font-size: clamp(40px, 5vw, 70px); line-height: 1.12; margin: 0 0 35px; text-align: center; }
 .manifesto-copy > p:last-child { color: var(--muted); font-size: 12px; line-height: 1.8; text-align: center; max-width: 520px; margin: auto; }
 .manifesto-copy .eyebrow { text-align: center; }
-.manifesto-detail { position: absolute; right: 5vw; bottom: 55px; display: flex; flex-direction: column; }
-.manifesto-detail span { color: var(--gold); font-family: var(--serif); font-size: 24px; }
-.manifesto-detail small { color: var(--muted); font-size: 8px; text-transform: uppercase; letter-spacing: .15em; }
 
 .custom-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10vw; background: #0e0c09; border-top: 1px solid var(--line); }
 .custom-intro > p:not(.eyebrow) { color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 480px; margin: 32px 0 55px; }
@@ -337,9 +335,8 @@ footer { background: #030303; border-top: 1px solid var(--line); }
   .custom-card { min-height: 280px; padding: 24px; }
   .custom-card h3 { font-size: 32px; }
   .custom-card p:not(.eyebrow) { display: none; }
-  .manifesto { min-height: 600px; padding: 90px 25px; }
-  .manifesto-mark { font-size: 420px; }
-  .manifesto-detail { display: none; }
+  .manifesto { height: 45svh; min-height: 0; }
+  .manifesto-copy { padding: 20px; }
   .custom-section, .support-section { grid-template-columns: 1fr; gap: 70px; }
   .luxury-form { padding: 26px 20px; }
   .form-heading { display: block; }
