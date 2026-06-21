@@ -1,6 +1,6 @@
 const API_VERSION = "2026-04";
 const CART_STORAGE_KEY = "rovjewelery-shopify-cart-id";
-const COLLECTIONS = ["chains", "necklaces", "bracelets", "watches"];
+const COLLECTIONS = ["chains", "necklaces", "bracelets", "watches", "moissanite"];
 const PRODUCTS_PER_PAGE = 6;
 const config = window.SHOPIFY_CONFIG || {};
 const storeDomain = normalizeStoreDomain(config.SHOPIFY_STORE_URL);
@@ -14,7 +14,7 @@ const isConfigured = Boolean(
 
 const state = {
   activeCategory: "all",
-  products: { all: [], chains: [], necklaces: [], bracelets: [], watches: [] },
+  products: { all: [], chains: [], necklaces: [], bracelets: [], watches: [], moissanite: [] },
   currentPage: 1,
   cart: null,
   selectedProduct: null,
@@ -289,6 +289,15 @@ function renderProducts() {
       `;
       return;
     }
+    if (state.activeCategory === "moissanite") {
+      productGrid.innerHTML = `
+        <div class="catalog-message">
+          <h3>No pieces found</h3>
+          <p>No moissanite pieces available.</p>
+        </div>
+      `;
+      return;
+    }
     productGrid.innerHTML = `
       <div class="catalog-message">
         <h3>No pieces found</h3>
@@ -349,7 +358,8 @@ function productMatchesCategory(product, category) {
     chains: ["chain", "chains"],
     necklaces: ["necklace", "necklaces", "pendant", "pendants"],
     bracelets: ["bracelet", "bracelets", "bangle", "bangles"],
-    watches: ["watch", "watches", "g-shock", "citizen", "eco-drive", "timepiece"]
+    watches: ["watch", "watches", "g-shock", "citizen", "eco-drive", "timepiece"],
+    moissanite: ["moissanite"]
   };
   const searchable = [
     product.title,
