@@ -875,7 +875,7 @@ function setupHeroVideo() {
 }
 
 function setupRovStandardVideos() {
-  document.querySelectorAll(".rov-standard video").forEach((video) => {
+  document.querySelectorAll(".rov-standard video, .our-story video").forEach((video) => {
     video.addEventListener("playing", () => video.classList.add("is-ready"), { once: true });
     video.muted = true;
     video.play().catch(() => {});
