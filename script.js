@@ -32,7 +32,6 @@ const cartLines = document.querySelector("#cart-lines");
 const cartFooter = document.querySelector("#cart-footer");
 const checkoutButton = document.querySelector("#checkout-button");
 const productModal = document.querySelector(".product-modal");
-const storyModal = document.querySelector(".story-modal");
 const modalVariant = document.querySelector("#product-modal-variant");
 const modalQuantity = document.querySelector("#product-modal-quantity");
 const modalAddButton = document.querySelector("#product-modal-add");
@@ -515,22 +514,6 @@ function closeProductModal() {
   productModal.setAttribute("aria-hidden", "true");
 }
 
-function openStoryModal() {
-  document.body.classList.add("story-open");
-  storyModal.setAttribute("aria-hidden", "false");
-  storyModal.querySelector(".story-modal-close").focus();
-}
-
-function closeStoryModal() {
-  document.body.classList.remove("story-open");
-  storyModal.setAttribute("aria-hidden", "true");
-}
-
-document.querySelectorAll("[data-story-open]").forEach((button) => button.addEventListener("click", openStoryModal));
-document.addEventListener("click", (event) => {
-  if (event.target.closest("[data-story-close]")) closeStoryModal();
-});
-
 function updateProductModalVariant() {
   const variant = state.selectedProduct?.variants.nodes.find((item) => item.id === state.selectedVariantId);
   document.querySelector("#product-modal-price").textContent = formatMoney(variant?.price);
@@ -786,7 +769,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeCart();
     closeProductModal();
-    closeStoryModal();
   }
 });
 checkoutButton.addEventListener("click", async () => {
@@ -893,7 +875,7 @@ function setupHeroVideo() {
 }
 
 function setupRovStandardVideos() {
-  document.querySelectorAll(".rov-standard video, .story-modal video").forEach((video) => {
+  document.querySelectorAll(".rov-standard video, .our-story video").forEach((video) => {
     video.addEventListener("playing", () => video.classList.add("is-ready"), { once: true });
     video.muted = true;
     video.play().catch(() => {});
