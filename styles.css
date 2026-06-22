@@ -69,8 +69,16 @@ h1 em, h2 em, .custom-card em { font-weight: 400; color: var(--gold); }
 .hero-stamp small { font-size: 7px; letter-spacing: .2em; margin-top: 4px; }
 .scroll-cue { position: absolute; z-index: 2; left: 4vw; bottom: 25px; font-size: 8px; text-transform: uppercase; letter-spacing: .22em; color: #8f8a80; display: flex; gap: 10px; align-items: center; }
 .scroll-cue span { height: 1px; width: 35px; background: var(--gold); }
+.hero-story-trigger { margin-top: 16px; border: 0; border-bottom: 1px solid rgba(241,212,123,.65); background: transparent; color: var(--gold-light); padding: 0 0 8px; cursor: pointer; text-transform: uppercase; letter-spacing: .17em; font-size: 9px; }
+.hero-story-trigger span { margin-left: 24px; font-size: 14px; }
 
-.our-story { background: #0b0a08; border-bottom: 1px solid var(--line); }
+.story-modal-overlay { position: fixed; inset: 0; z-index: 44; background: rgba(0,0,0,.82); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s ease; }
+.story-modal { position: fixed; inset: 4vh 3vw; z-index: 45; background: #0b0a08; border: 1px solid var(--line); opacity: 0; visibility: hidden; transform: translateY(18px); transition: opacity .35s ease, visibility .35s ease, transform .35s ease; }
+.story-open .story-modal-overlay { opacity: 1; visibility: visible; }
+.story-open .story-modal { opacity: 1; visibility: visible; transform: none; }
+.story-open { overflow: hidden; }
+.story-modal-close { position: absolute; z-index: 2; top: 18px; right: 20px; width: 44px; height: 44px; border: 1px solid rgba(212,168,47,.45); background: rgba(5,5,5,.76); color: var(--gold); cursor: pointer; font-size: 30px; line-height: 1; }
+.story-modal-scroll { height: 100%; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: clamp(55px, 6vw, 90px); }
 .our-story-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 7vw, 120px); align-items: center; }
 .our-story-copy { max-width: 620px; }
 .our-story-copy h2 { font-size: clamp(54px, 6.5vw, 96px); margin-bottom: 34px; }
@@ -326,6 +334,10 @@ footer { background: #030303; border-top: 1px solid var(--line); }
   .hero-stamp { width: 80px; height: 80px; right: 20px; bottom: 60px; }
   .hero-stamp span { font-size: 20px; }
   .scroll-cue { display: none; }
+  .hero-story-trigger { font-size: 8px; }
+  .story-modal { inset: 0; border: 0; }
+  .story-modal-scroll { padding: 78px 20px 36px; }
+  .story-modal-close { position: fixed; top: 16px; right: 16px; }
   .our-story-layout { grid-template-columns: 1fr; gap: 48px; }
   .our-story-copy { max-width: none; }
   .our-story-media { grid-template-columns: 1fr; grid-auto-rows: 280px; gap: 12px; }
