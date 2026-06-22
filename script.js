@@ -874,6 +874,16 @@ function setupHeroVideo() {
   });
 }
 
+function setupRovStandardVideos() {
+  document.querySelectorAll(".rov-standard video").forEach((video) => {
+    video.addEventListener("playing", () => video.classList.add("is-ready"), { once: true });
+    video.muted = true;
+    video.play().catch(() => {});
+    if (!video.paused) video.classList.add("is-ready");
+  });
+}
+
 setupHeroVideo();
+setupRovStandardVideos();
 loadCatalog();
 restoreCart();
